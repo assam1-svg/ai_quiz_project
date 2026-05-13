@@ -88,7 +88,37 @@ router.post("/quiz/generate", async (req, res) => {
     console.error(e);
     res.send("Quiz failed");
   }
+  
+});
+router.post("/quiz/submit", async (req, res) => {
+  try {
+    const questions = req.body.questions;
+    const answers = req.body.answers;
+    const name = req.body.name;
 
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+
+    const prompt = "A student was given these quiz questions:\n" + questions +
+      "\n\nTheir answers were:\n" + answers +
+      "\n\nPlease grade each answer briefly and tell them if they got it right or wrong. Be encouraging.";
+
+    const result = await model.generateContent(prompt);
+    const feedback = result.response.text();
+
+    res.render("dashboard", {
+      name: name,
+      quiz: questions,
+      feedback: feedback
+    });
+
+  } catch(e) {
+    console.error(e);
+    res.render("dashboard", {
+      name: req.body.name || "User",
+      quiz: req.body.questions,
+      feedback: "Could not grade answers at this time."
+    });
+  }
 });
 router.get("/test-ai", async (req, res) => {
   try {

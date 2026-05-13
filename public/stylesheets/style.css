@@ -86,3 +86,37 @@ input[type="checkbox"] {
     text-align: center;
     color: rgb(158, 155, 155);
 }
+.dashboard {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard h1 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.dashboard h2 {
+  margin-bottom: 10px;
+}
+
+.quiz-box, .feedback-box {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  resize: vertical;
+}

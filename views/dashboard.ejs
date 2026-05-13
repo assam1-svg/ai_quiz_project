@@ -1,28 +1,43 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-
 <body>
 
-  <h1>Welcome, <%= name %></h1>
+  <div class="dashboard">
+    <h1>Welcome, <%= name %></h1>
 
-  <form method="POST" action="/users/quiz/generate">
+    <form method="POST" action="/users/quiz/generate">
+      <input type="hidden" name="name" value="<%= name %>">
+      <input type="text" name="topic" placeholder="Enter a topic...">
+      <input type="submit" value="Generate Quiz">
+    </form>
 
-    <input type="hidden" name="name" value="<%= name %>">
+    <% if (quiz) { %>
+      <div class="quiz-box">
+        <h2>Your Quiz</h2>
+        <form method="POST" action="/users/quiz/submit">
+          <input type="hidden" name="name" value="<%= name %>">
+          <input type="hidden" name="questions" value="<%= quiz %>">
+          <pre><%= quiz %></pre>
+          <label>Your Answers:</label>
+          <textarea name="answers" rows="8" placeholder="Type your answers here, one per line..."></textarea>
+          <input type="submit" value="Submit Answers">
+        </form>
+      </div>
+    <% } %>
 
-    <input type="text" name="topic" placeholder="Enter topic">
+    <% if (typeof feedback !== 'undefined' && feedback) { %>
+      <div class="feedback-box">
+        <h2>Feedback</h2>
+        <pre><%= feedback %></pre>
+      </div>
+    <% } %>
 
-    <input type="submit" value="Generate Quiz">
-
-  </form>
-
-  <% if (quiz) { %>
-    <pre><%= quiz %></pre>
-  <% } %>
+  </div>
 
 </body>
-
 </html>
