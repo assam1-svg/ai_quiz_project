@@ -22,4 +22,4 @@
 4. Run `npm start`
 
 ## API
-Google Gemini API (`gemini-2.0-flash`)
+Google Gemini API (`gemini-2.5-flash`)
