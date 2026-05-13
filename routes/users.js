@@ -96,7 +96,7 @@ router.post("/quiz/submit", async (req, res) => {
     const answers = req.body.answers;
     const name = req.body.name;
 
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const prompt = "A student was given these quiz questions:\n" + questions +
       "\n\nTheir answers were:\n" + answers +
