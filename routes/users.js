@@ -68,7 +68,7 @@ router.post("/quiz/generate", async (req, res) => {
   try {
     const topic = req.body.topic;
     const model = genAI.getGenerativeModel({
-		model: "gemini-2.0-flash"
+		model: "gemini-2.5-flash"
 });
 
     const result = await model.generateContent(
