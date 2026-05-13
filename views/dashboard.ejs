@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+
+  <h1>Welcome, <%= name %></h1>
+
+  <form method="POST" action="/users/quiz/generate">
+
+    <input type="hidden" name="name" value="<%= name %>">
+
+    <input type="text" name="topic" placeholder="Enter topic">
+
+    <input type="submit" value="Generate Quiz">
+
+  </form>
+
+  <% if (quiz) { %>
+    <pre><%= quiz %></pre>
+  <% } %>
+
+</body>
+
+</html>
